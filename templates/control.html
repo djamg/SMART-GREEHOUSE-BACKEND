@@ -9,23 +9,23 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
 </head>
 <body>
     
-    <div class="title"><img src="./assets/logo.png" alt="logo">
+    <div class="title"><img src="../static/logo.png" alt="logo">
         <span>SMART GREENHOUSE</span>
     </div>
     <div class="container1-control">
         
         <div class="nav">
-            <a href="/index.html" type="button" class="btn btn-primary btn-lg">CROP</button></a>
+            <a href="/" type="button" class="btn btn-primary btn-lg">CROP</button></a>
             <a href="/control.html" type="button" class="btn btn-primary btn-lg">CONTROL</button></a>    
         </div>
         <div class="card-container">
             <div class="card-row">
                 <div class="card-control">
-                    <div class="card-image-control"><img src="./assets/fan.png" alt=""></div>
+                    <div class="card-image-control"><img src="../static/fan.png" alt=""></div>
                     <div class="card-crop-display">FAN</div>
                     <div>
                         <label class="switch  fan">
@@ -37,7 +37,7 @@
             </div>
             <div class="card-row">
                 <div class="card-control">
-                    <div class="card-image-control"><img src="./assets/sun.png" alt=""></div>
+                    <div class="card-image-control"><img src="../static/sun.png" alt=""></div>
                     <div class="card-crop-display">LIGHT</div>
                     <div>
                         <label class="switch light">
@@ -49,7 +49,7 @@
             </div>
             <div class="card-row">
                 <div class="card-control">
-                    <div class="card-image-control"><img src="./assets/drop.png" alt=""></div>
+                    <div class="card-image-control"><img src="../static/drop.png" alt=""></div>
                     <div class="card-crop-display">WATER</div>
                     <div>
                         <label class="switch water">
@@ -61,7 +61,7 @@
             </div>
             <div class="card-row">
                 <div class="card-control">
-                    <div class="card-image-control"><img src="./assets/uv-protection.png" alt=""></div>
+                    <div class="card-image-control"><img src="../static/uv-protection.png" alt=""></div>
                     <div class="card-crop-display">UV</div>
                     <div>
                         <label class="switch uv">

@@ -9,30 +9,30 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="styles.css">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
 </head>
 <body>
     
-    <div class="title"><img src="./assets/logo.png" alt="logo">
+    <div class="title"><img src="../static/logo.png" alt="logo">
         <span>SMART GREENHOUSE</span>
     </div>
     <div class="container1">
         
         <div class="nav">
-            <a href="/index.html" type="button" class="btn btn-primary btn-lg">CROP</button></a>
-            <a href="./control.html" type="button" class="btn btn-primary btn-lg">CONTROL</button></a>
+            <a href="/" type="button" class="btn btn-primary btn-lg">CROP</button></a>
+            <a href="/control.html" type="button" class="btn btn-primary btn-lg">CONTROL</button></a>
             
         </div>
         <div class="card-container">
             <div class="card-row">
                 <div class="card">
-                    <div class="card-image"><img src="./assets/tomato.png" alt=""></div>
+                    <div class="card-image"><img src="../static/tomato.png" alt=""></div>
                     <div class="card-crop">TOMATO</div>
                     <div class="card-time">30 DAYS</div>
                     <div class="card-select"><a href="?q=tomato"> SELECT</a></div>
                 </div>
                 <div class="card">
-                    <div class="card-image"><img src="./assets/methi.jpg" alt=""></div>
+                    <div class="card-image"><img src="../static/methi.jpg" alt=""></div>
                     <div class="card-crop">METHI</div>
                     <div class="card-time">11 DAYS</div>
                     <div class="card-select"><a href="?q=methi"> SELECT</a></div>
@@ -40,13 +40,13 @@
             </div>
             <div class="card-row">
                 <div class="card">
-                    <div class="card-image"><img src="./assets/lettuce.png" alt=""></div>
+                    <div class="card-image"><img src="../static/lettuce.png" alt=""></div>
                     <div class="card-crop">LETTUCE</div>
                     <div class="card-time">20 DAYS</div>
                     <div class="card-select"><a href="?q=lettuce"> SELECT</a></div>
                 </div>
                 <div class="card">
-                    <div class="card-image"><img src="./assets/spinach.png" alt=""></div>
+                    <div class="card-image"><img src="../static/spinach.png" alt=""></div>
                     <div class="card-crop">SPINACH</div>
                     <div class="card-time">30 DAYS</div>
                     <div class="card-select"><a href="?q=spinach"> SELECT</a></div>
@@ -54,13 +54,13 @@
             </div>
             <div class="card-row">
                 <div class="card">
-                    <div class="card-image"><img src="./assets/raddish.png" alt=""></div>
+                    <div class="card-image"><img src="../static/raddish.png" alt=""></div>
                     <div class="card-crop">RADDISH</div>
                     <div class="card-time">20 DAYS</div>
                     <div class="card-select"><a href="?q=raddish"> SELECT</a></div>
                 </div>
                 <div class="card">
-                    <div class="card-image"><img src="./assets/carrot.png" alt=""></div>
+                    <div class="card-image"><img src="../static/carrot.png" alt=""></div>
                     <div class="card-crop">CARROT</div>
                     <div class="card-time">50 DAYS</div>
                     <div class="card-select"><a href="?q=carrot"> SELECT</a></div>
