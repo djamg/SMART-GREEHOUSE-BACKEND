@@ -10,6 +10,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='css/styles.css') }}">
+    <!-- <script src="{{url_for('static', filename='./index.js')}}"></script> -->
 </head>
 <body>
     
@@ -29,7 +30,7 @@
                     <div class="card-crop-display">FAN</div>
                     <div>
                         <label class="switch  fan">
-                            <input type="checkbox">
+                            <input type="checkbox" id="fan" onclick="calc('fan');">
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -41,7 +42,7 @@
                     <div class="card-crop-display">LIGHT</div>
                     <div>
                         <label class="switch light">
-                            <input type="checkbox">
+                            <input type="checkbox" id="light" onclick="calc('light');">
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -53,7 +54,7 @@
                     <div class="card-crop-display">WATER</div>
                     <div>
                         <label class="switch water">
-                            <input type="checkbox">
+                            <input type="checkbox" id="water" onclick="calc('water');">
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -65,7 +66,7 @@
                     <div class="card-crop-display">UV</div>
                     <div>
                         <label class="switch uv">
-                            <input type="checkbox">
+                            <input type="checkbox" id="uv" onclick="calc('uv');">
                             <span class="slider round"></span>
                         </label>
                     </div>
@@ -92,5 +93,24 @@
                 </div>
             </div>
     </div>
+    <script>
+        const url = 'http://192.168.3.104:5000/write';
+
+        function calc(x)
+            {
+            if (document.getElementById(x).checked) 
+            {
+                console.log("yoyoyo" + x);
+                fetch(url+"?q="+x+"_on")
+                    .then(response => response)
+                    .then(data => console.log(data));
+            } else {
+                console.log("nononono" +x);
+                fetch(url+"?q="+x+"_off")
+                    .then(response => response)
+                    .then(data => console.log(data));
+            }
+            }
+    </script>
 </body>
 </html>

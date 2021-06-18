@@ -5,6 +5,7 @@ body {
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
   margin: 0;
   padding: 0;
+  height: 100%;
 }
 
 .title {
@@ -114,7 +115,9 @@ a:visited {
 /* NEW ONES */
 
 .container1-control {
+  position: relative;
   background-image: linear-gradient(to top left, #39b385, #9be15d);
+  height: 82%;
 }
 
 .card-control {
