@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+   <body>
+      <table border = 1>
+         <thead>
+            <td>Timestamp</td>
+            <td>Temperature</td>
+            <td>Humidity</td>
+            <td>Soil Humidity</td>
+            <td>Water Level</td>
+         </thead>
+         
+         {% for row in rows %}
+            <tr>
+               <td>{{row["time_stamp"]}}</td>
+               <td>{{row["temperature"]}}</td>
+               <td>{{row["humidity"]}}</td>
+               <td>{{row["soil_humidity"]}}</td>
+               <td>{{row["water_level"]}}</td>
+
+            </tr>
+         {% endfor %}
+      </table>
+      
+      <a href = "/">Go back to home page</a>
+   </body>
+</html>
