@@ -6,7 +6,12 @@ import time
 from gpiozero import LED
 import RPi.GPIO as GPIO
 import sqlite3 as sql
+import json
+import atexit
+from apscheduler.schedulers.background import BackgroundScheduler
 
+ser = serial.Serial('/dev/ttyACM0', 9600, timeout=1)
+ser.flush()
 
 led = LED(17)
 led2 = LED(25)
@@ -15,13 +20,38 @@ app = Flask(__name__)
 CORS(app)
 
 
+def hello():
+    ser.write(b"\n")
+    ser_bytes = ser.readline()
+      
+    decoded_bytes = str(ser_bytes[0:len(ser_bytes)-2].decode("utf-8"))
+    res = json.loads(decoded_bytes)
+    print(res)
+    ts = time.time()
+    try:
+        with sql.connect("iotdata.db") as con:
+            cur = con.cursor()
+            cur.execute("INSERT INTO sensor_data (time_stamp,temperature, humidity, soil_humidity, water_level) VALUES (?,?,?,?,?)",(ts,"","",res["soil"],res["ldr"]) )
+            
+            con.commit()
+            msg = "Record successfully added"
+            print(msg)
+    except:
+         con.rollback()
+         msg = "error in insert operation"
+    
+scheduler = BackgroundScheduler()
+scheduler.add_job(func=hello, trigger="interval", seconds=10)
+scheduler.start()
+
+
 @app.route('/')
 def home():
     return render_template('/index.html')
 
 
 @app.route('/control.html')
-def new_student():
+def control():
     return render_template('/control.html')
 
 
@@ -79,17 +109,28 @@ def read():
     return n
     
 
-@app.route('/list')
-def list():
+@app.route('/list_control')
+def list_control():
     con = sql.connect("iotdata.db")
     con.row_factory = sql.Row
    
     cur = con.cursor()
-    cur.execute("select * from control_data")
+    cur.execute("select * from control_data ORDER BY time_stamp DESC limit 10")
    
     rows = cur.fetchall(); 
-    return render_template("list.html",rows = rows)
+    return render_template("list_control.html",rows = rows)
+    
+@app.route('/list_sensor')
+def list_sensor():
+    con = sql.connect("iotdata.db")
+    con.row_factory = sql.Row
+   
+    cur = con.cursor()
+    cur.execute("select * from sensor_data ORDER BY time_stamp DESC limit 10")
+   
+    rows = cur.fetchall(); 
+    return render_template("list_sensor.html",rows = rows)
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True)
+    app.run(host='0.0.0.0', debug=True, threaded=True, use_reloader=False)
