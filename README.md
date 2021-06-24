@@ -1,3 +1,3 @@
-# [SMART-GREENHOUSE] (!https://djamg.github.io/SMART-GREEHOUSE-BACKEND)
+# [SMART-GREENHOUSE] (!https://djamg.github.io/SMART-GREEHOUSE-FRONTEND)
 
 ![screenshot](https://user-images.githubusercontent.com/22789793/122227851-e678d800-ced4-11eb-9a9a-717bd6afd540.jpg)
