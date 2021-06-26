@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
 import sqlite3 as sql
 from flask_cors import CORS
 import serial
@@ -41,7 +41,7 @@ def hello():
          msg = "error in insert operation"
     
 scheduler = BackgroundScheduler()
-scheduler.add_job(func=hello, trigger="interval", seconds=10)
+scheduler.add_job(func=hello, trigger="interval", seconds=15)
 scheduler.start()
 
 
@@ -115,7 +115,7 @@ def list_control():
     con.row_factory = sql.Row
    
     cur = con.cursor()
-    cur.execute("select * from control_data ORDER BY time_stamp DESC limit 10")
+    cur.execute("select * from control_data ORDER BY time_stamp DESC limit 30")
    
     rows = cur.fetchall(); 
     return render_template("list_control.html",rows = rows)
@@ -126,11 +126,18 @@ def list_sensor():
     con.row_factory = sql.Row
    
     cur = con.cursor()
-    cur.execute("select * from sensor_data ORDER BY time_stamp DESC limit 10")
+    cur.execute("select * from sensor_data ORDER BY time_stamp DESC limit 15")
    
     rows = cur.fetchall(); 
     return render_template("list_sensor.html",rows = rows)
 
+@app.route('/api/list_sensor/<l>')
+def api_list_sensor(l=30):
+    con = sql.connect("iotdata.db")
+    cur = con.cursor()
+    cur.execute("select * from sensor_data ORDER BY time_stamp DESC limit ?", [l])
+    rows = cur.fetchall(); 
+    return json.dumps(rows)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, threaded=True, use_reloader=False)
