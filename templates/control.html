@@ -14,65 +14,38 @@
 </head>
 <body>
     
-    <div class="title"><img src="../static/logo.png" alt="logo">
+    <div class="title"><img src="./assets/logo.png" alt="logo">
         <span>SMART GREENHOUSE</span>
     </div>
-    <div class="container1-control">
+    <div class="container1">
         
         <div class="nav">
-            <a href="/" type="button" class="btn btn-primary btn-lg">CROP</button></a>
+            <a href="/index.html" type="button" class="btn btn-primary btn-lg">CROP</button></a>
             <a href="/control.html" type="button" class="btn btn-primary btn-lg">CONTROL</button></a>    
         </div>
         <div class="card-container">
-            <div class="card-row">
-                <div class="card-control">
-                    <div class="card-image-control"><img src="../static/fan.png" alt=""></div>
-                    <div class="card-crop-display">FAN</div>
-                    <div>
-                        <label class="switch  fan">
-                            <input type="checkbox" id="fan" onclick="calc('fan');">
-                            <span class="slider round"></span>
-                        </label>
+                <div class="card-row">
+                    <div class="card-control">
+                        <input class="checkbox" id="fan" type="checkbox" name="fan" onclick="calc('fan');"/>
+                        <label for="fan" class="check card-image-new" ><img src="./assets/fan.png" alt=""><div class="card-crop-display">FAN</div></label>
+                    </div>
+                    <div class="card-control">
+                        <input class="checkbox" id="light" type="checkbox" name="light" onclick="calc('light');"/>
+                        <label for="light" class="check card-image-new"><img src="./assets/sun.png" alt=""><div class="card-crop-display">LIGHT</div></label>
+                    </div>
+                </div>
+                <div class="card-row">
+                    <div class="card-control">
+                        <input class="checkbox" id="water" type="checkbox" name="water" onclick="calc('water');"/>
+                        <label for="water" class="check card-image-new"><img src="./assets/drop.png" alt=""><div class="card-crop-display">WATER</div></label>
+                    </div>
+                    <div class="card-control">
+                        <input class="checkbox" id="uv" type="checkbox" name="uv" onclick="calc('uv');" />
+                        <label for="uv" class="check card-image-new"><img src="./assets/uv-protection.png" alt=""><div class="card-crop-display">UV</div></label>
                     </div>
                 </div>
             </div>
             <div class="card-row">
-                <div class="card-control">
-                    <div class="card-image-control"><img src="../static/sun.png" alt=""></div>
-                    <div class="card-crop-display">LIGHT</div>
-                    <div>
-                        <label class="switch light">
-                            <input type="checkbox" id="light" onclick="calc('light');">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="card-row">
-                <div class="card-control">
-                    <div class="card-image-control"><img src="../static/drop.png" alt=""></div>
-                    <div class="card-crop-display">WATER</div>
-                    <div>
-                        <label class="switch water">
-                            <input type="checkbox" id="water" onclick="calc('water');">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="card-row">
-                <div class="card-control">
-                    <div class="card-image-control"><img src="../static/uv-protection.png" alt=""></div>
-                    <div class="card-crop-display">UV</div>
-                    <div>
-                        <label class="switch uv">
-                            <input type="checkbox" id="uv" onclick="calc('uv');">
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                </div>
-            </div>
-            <div class="card-row-display">
                 <div class="card-display">
                     <div class="card-crop-display">HUM</div>
                     <div class="card-time-control">70%</div>
@@ -82,7 +55,7 @@
                     <div class="card-time-control">20 C</div>
                 </div>
             </div>
-            <div class="card-row-display">
+            <div class="card-row">
                 <div class="card-display">
                     <div class="card-crop-display">SMO</div>
                     <div class="card-time-control">30%</div>
@@ -93,6 +66,7 @@
                 </div>
             </div>
     </div>
+
     <script>
         const url = '/write';
 
@@ -114,3 +88,6 @@
     </script>
 </body>
 </html>
+
+
+

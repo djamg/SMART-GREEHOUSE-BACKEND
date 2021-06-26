@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <div>
+    <canvas id="myChart"></canvas>
+  </div>
+  <script>
+
+
+    const labels = [
+    1624718360.6075978,1624718345.6076899,1624718330.6075568,1624718310.6075568
+    ];
+    const data = {
+      labels: labels,
+      datasets: [{
+        label: 'My First dataset',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [27.8,30,34,35]
+      }]
+    };
+
+    const config = {
+      type: 'line',
+      data,
+      options: {}
+    };
+    // === include 'setup' then 'config' above ===
+  
+    var myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+  </script>
+</body>
+</html>
