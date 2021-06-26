@@ -134,10 +134,13 @@ def list_sensor():
 @app.route('/api/list_sensor/<l>')
 def api_list_sensor(l=30):
     con = sql.connect("iotdata.db")
-    cur = con.cursor()
-    cur.execute("select * from sensor_data ORDER BY time_stamp DESC limit ?", [l])
-    rows = cur.fetchall(); 
-    return json.dumps(rows)
+    con.row_factory = sql.Row
+    values = con.execute("select * from sensor_data ORDER BY time_stamp DESC limit ?", [l]).fetchall()
+    list_accumulator = []
+    for item in values:
+        list_accumulator.append({k: item[k] for k in item.keys()})
+    #print(list_accumulator)
+    return jsonify(list_accumulator)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', debug=True, threaded=True, use_reloader=False)
