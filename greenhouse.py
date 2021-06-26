@@ -31,7 +31,7 @@ def hello():
     try:
         with sql.connect("iotdata.db") as con:
             cur = con.cursor()
-            cur.execute("INSERT INTO sensor_data (time_stamp,temperature, humidity, soil_humidity, water_level) VALUES (?,?,?,?,?)",(ts,"","",res["soil"],res["ldr"]) )
+            cur.execute("INSERT INTO sensor_data (time_stamp,temperature, humidity, soil_humidity, water_level) VALUES (?,?,?,?,?)",(ts,res["temperature"],res["humidity"],res["soil"],res["water"]) )
             
             con.commit()
             msg = "Record successfully added"
@@ -39,7 +39,7 @@ def hello():
     except:
          con.rollback()
          msg = "error in insert operation"
-    
+         
 scheduler = BackgroundScheduler()
 scheduler.add_job(func=hello, trigger="interval", seconds=15)
 scheduler.start()
