@@ -76,7 +76,11 @@ var jsonfile;
             animationDuration: 2000, // duration of animations when hovering an item
         },
         responsiveAnimationDuration: 2000, // animation duration after a resize
-    
+        plugins: {
+          legend: {
+              display: false,
+          }
+      },
         scales: {
           
           x: {
@@ -85,7 +89,8 @@ var jsonfile;
             },
             grid: {
                 display: false
-              }
+              },
+            
           },
         }
         
