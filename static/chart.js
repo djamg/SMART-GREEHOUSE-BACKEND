@@ -1,7 +1,7 @@
 var jsonfile;
     var xmlhttp = new XMLHttpRequest();
-    var url = "http://192.168.3.140:5000/api/list_sensor/30";
-    xmlhttp.open("GET",url,true);
+    var url2 = "http://192.168.3.140:5000/api/list_sensor/30";
+    xmlhttp.open("GET",url2,true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function(){
       if(this.readyState == 4 && this.status == 200){
