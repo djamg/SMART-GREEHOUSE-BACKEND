@@ -1,6 +1,16 @@
-var jsonfile;
+var myChart;
+
+function call2(config){
+        myChart = new Chart(
+      document.getElementById('myChart'),
+      config
+    );
+    };
+
+function call1(){
+    var jsonfile;
     var xmlhttp = new XMLHttpRequest();
-    var url2 = "http://192.168.3.140:5000/api/list_sensor/30";
+    var url2 = "/api/list_sensor/60";
     xmlhttp.open("GET",url2,true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function(){
@@ -31,13 +41,13 @@ var jsonfile;
     const data = {
       labels: labels,
       datasets: [{
-        label: 'Soil Moisture',
-        backgroundColor: 'rgb(255, 99, 132)',
-        borderColor: 'rgb(255, 99, 132)',
+        label: 'Soil Moist',
+        backgroundColor: 'rgb(30,144,255)',
+        borderColor: 'rgb(30,144,255)',
         data: data1
       },
       {
-        label: 'Temperature',
+        label: 'Temp',
         backgroundColor: 'rgb(55, 9, 152)',
         borderColor: 'rgb(55, 9, 152)',
         data: data2
@@ -70,15 +80,15 @@ var jsonfile;
         },
         maintainAspectRatio: false,
         animation: {
-            duration: 2000, // general animation time
+            duration: 1000, // general animation time
         },
         hover: {
-            animationDuration: 2000, // duration of animations when hovering an item
+            animationDuration: 1000, // duration of animations when hovering an item
         },
-        responsiveAnimationDuration: 2000, // animation duration after a resize
+        responsiveAnimationDuration: 1000, // animation duration after a resize
         plugins: {
           legend: {
-              display: false,
+              display: true,
           }
       },
         scales: {
@@ -98,11 +108,19 @@ var jsonfile;
     };
     // === include 'setup' then 'config' above ===
   
-    var myChart = new Chart(
-      document.getElementById('myChart'),
-      config
-    );
+    call2(config);
     
-  }
+  
     }
     
+    
+}
+};
+
+call1();
+function call3(){
+        myChart.destroy();
+        call1();
+    };
+setInterval("call3();",10000); 
+
