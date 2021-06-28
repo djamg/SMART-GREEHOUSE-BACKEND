@@ -94,25 +94,26 @@
             
             function valueChange(){
                     var xmlhttp = new XMLHttpRequest();
-                    var url2 = "/api/list_sensor/1";
-                    xmlhttp.open("GET",url2,true);
+                    var url1 = "/api/list_sensor/1";
+                    xmlhttp.open("GET",url1,true);
                     xmlhttp.send();
                     xmlhttp.onreadystatechange = function(){
                         if(this.readyState == 4 && this.status == 200){
-                            var jsonfile = JSON.parse(this.responseText);
+                            var jsonfile1 = JSON.parse(this.responseText);
                             var hum = document.getElementById("hum");
                             var temp = document.getElementById("temp");
                             var smo = document.getElementById("smo");
                             var water = document.getElementById("water");
-                            hum.innerHTML = jsonfile[0].humidity+"%";
-                            temp.innerHTML = jsonfile[0].temperature+"°C";
-                            smo.innerHTML = jsonfile[0]["soil_humidity"]+"%";
-                            water.innerHTML = jsonfile[0]["water_level"]+"%";
+                            hum.innerHTML = jsonfile1[0].humidity+"%";
+                            temp.innerHTML = jsonfile1[0].temperature+"°C";
+                            smo.innerHTML = jsonfile1[0]["soil_humidity"]+"%";
+                            water.innerHTML = jsonfile1[0]["water_level"]+"%";
                             console.log(this.responseText);
                         }
             };
         };
         valueChange();
+        setInterval("valueChange();",14000); 
     </script>
           <script src="{{url_for('static', filename='./chart.js')}}"></script>
 

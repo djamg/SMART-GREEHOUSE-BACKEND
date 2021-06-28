@@ -122,5 +122,5 @@ function call3(){
         myChart.destroy();
         call1();
     };
-setInterval("call3();",10000); 
+setInterval("call3();",15000); 
 
