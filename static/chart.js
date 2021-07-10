@@ -1,6 +1,6 @@
 var jsonfile;
     var xmlhttp = new XMLHttpRequest();
-    var url2 = "http://192.168.3.140:5000/api/list_sensor/30";
+    var url2 = "/api/list_sensor/30";
     xmlhttp.open("GET",url2,true);
     xmlhttp.send();
     xmlhttp.onreadystatechange = function(){
@@ -76,10 +76,7 @@ var jsonfile;
             animationDuration: 2000, // duration of animations when hovering an item
         },
         responsiveAnimationDuration: 2000, // animation duration after a resize
-        plugins: {
-          legend: {
-              display: false,
-          }
+        
       },
         scales: {
           
@@ -104,5 +101,5 @@ var jsonfile;
     );
     
   }
-    }
+    
     
