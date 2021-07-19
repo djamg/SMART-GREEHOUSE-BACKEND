@@ -10,7 +10,7 @@ import json
 import atexit
 from apscheduler.schedulers.background import BackgroundScheduler
 
-ser = serial.Serial('/dev/ttyACM0', 9600, timeout=2)
+ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=2)
 ser.flush()
 
 led = LED(17)

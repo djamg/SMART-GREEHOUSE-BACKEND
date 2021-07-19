@@ -63,7 +63,7 @@
                 </div>
                 <div class="card-display">
                     <div class="card-crop-display">WATER</div>
-                    <div class="card-time-control" id="water">50%</div>
+                    <div class="card-time-control" id="water2">2</div>
                 </div>
             </div>
     </div>
@@ -103,11 +103,11 @@
                             var hum = document.getElementById("hum");
                             var temp = document.getElementById("temp");
                             var smo = document.getElementById("smo");
-                            var water = document.getElementById("water");
+                            var water2 = document.getElementById("water2");
                             hum.innerHTML = jsonfile1[0].humidity+"%";
                             temp.innerHTML = jsonfile1[0].temperature+"°C";
                             smo.innerHTML = jsonfile1[0]["soil_humidity"]+"%";
-                            water.innerHTML = jsonfile1[0]["water_level"]+"%";
+                            water2.innerHTML = jsonfile1[0]["water_level"];
                             console.log(this.responseText);
                         }
             };
