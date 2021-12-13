@@ -63,7 +63,9 @@
                 </div>
                 <div class="card-display">
                     <div class="card-crop-display">WATER</div>
-                    <div class="card-time-control">50%</div>
+
+                    <div class="card-time-control" id="water2">2</div>
+
                 </div>
             </div>
     </div>
@@ -90,7 +92,32 @@
                     .then(response => response)
                     .then(data => console.log(data));
             }
-            }
+
+            };
+            
+            function valueChange(){
+                    var xmlhttp = new XMLHttpRequest();
+                    var url1 = "/api/list_sensor/1";
+                    xmlhttp.open("GET",url1,true);
+                    xmlhttp.send();
+                    xmlhttp.onreadystatechange = function(){
+                        if(this.readyState == 4 && this.status == 200){
+                            var jsonfile1 = JSON.parse(this.responseText);
+                            var hum = document.getElementById("hum");
+                            var temp = document.getElementById("temp");
+                            var smo = document.getElementById("smo");
+                            var water2 = document.getElementById("water2");
+                            hum.innerHTML = jsonfile1[0].humidity+"%";
+                            temp.innerHTML = jsonfile1[0].temperature+"°C";
+                            smo.innerHTML = jsonfile1[0]["soil_humidity"]+"%";
+                            water2.innerHTML = jsonfile1[0]["water_level"];
+                            console.log(this.responseText);
+                        }
+            };
+        };
+        valueChange();
+        setInterval("valueChange();",14000); 
+
     </script>
           <script src="{{url_for('static', filename='./chart.js')}}"></script>
 
