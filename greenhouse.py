@@ -3,6 +3,7 @@ import sqlite3 as sql
 from flask_cors import CORS
 import serial
 import time
+import gpiozero
 from gpiozero import LED
 import RPi.GPIO as GPIO
 import sqlite3 as sql
@@ -13,8 +14,13 @@ from apscheduler.schedulers.background import BackgroundScheduler
 ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=2)
 ser.flush()
 
-led = LED(17)
-led2 = LED(25)
+fan = gpiozero.OutputDevice(12, active_high=False, initial_value=True)
+uv = gpiozero.OutputDevice(27, active_high=False, initial_value=True)
+water = gpiozero.OutputDevice(22, active_high=False, initial_value=True)
+fan.off()
+water.off()
+uv.off()
+
 
 app = Flask(__name__)
 CORS(app)
@@ -78,31 +84,35 @@ def read():
          msg = "error in insert operation"
     if "fan_on" in n:
         print("fan on")
-        led.off()
-        print(GPIO.input(17))
+        fan.on()
+        
     elif "fan_off" in n:
         print("fan off")
-        led.on()
-        print(GPIO.input(17))
-    elif "light_on" in n:
-        print("light on")
-        led2.on()
-        print(GPIO.input(25))
-    elif "light_off" in n:
-        print("light off")
-        led2.off()
-        print(GPIO.input(25))
+        fan.off()
+        
+    elif "uv_on" in n:
+        print("uv on")
+        uv.on()
+        
+    elif "uv_off" in n:
+        print("uv off")
+        uv.off()
+        
     elif "water_on" in n:
         print("water on")
+        water.on()
+       
 
     elif "water_off" in n:
         print("water off")
+        water.off()
+        
 
-    elif "uv_on" in n:
-        print("uv on")
+    elif "light_on" in n:
+        print("light on")
 
-    elif "water_off" in n:
-        print("uv off")
+    elif "light_off" in n:
+        print("light off")
 
     
 
