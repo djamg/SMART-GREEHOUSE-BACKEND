@@ -28,7 +28,8 @@ void loop() {
     float sensorValue = analogRead(SOIL) * (5.0 / 1023.0);
     int ldrValue = analogRead(LDR) * (5.0 / 1023.0);
     // print out the value you read:
-    root["soil"] = sensorValue;
+    float sensorValue1 = map(sensorValue, 0,5,100,0);
+    root["soil"] = sensorValue1;
     root["water"] = ldrValue;
     root["temperature"] = t;
     root["humidity"] = h;

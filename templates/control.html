@@ -49,26 +49,28 @@
             <div class="card-row">
                 <div class="card-display">
                     <div class="card-crop-display">HUM</div>
-                    <div class="card-time-control" id="hum">70%</div>
+                    <div class="card-time-control">70%</div>
                 </div>
                 <div class="card-display">
                     <div class="card-crop-display">TEMP</div>
-                    <div class="card-time-control" id="temp">20 C</div>
+                    <div class="card-time-control">20 C</div>
                 </div>
             </div>
             <div class="card-row">
                 <div class="card-display">
                     <div class="card-crop-display">SMO</div>
-                    <div class="card-time-control" id="smo">30%</div>
+                    <div class="card-time-control">30%</div>
                 </div>
                 <div class="card-display">
                     <div class="card-crop-display">WATER</div>
+
                     <div class="card-time-control" id="water2">2</div>
+
                 </div>
             </div>
     </div>
-      <div class="charttext" style="margin:0 auto; width: 88%; text-align: center; align-items: center; background-color: white; font-family:'sans-serif'; border-radius:25px; padding:5px">
-  <div class="chartjs" style="  min-height: 160px;  ">
+      <div class="charttext" style="margin:0 auto; width: 88%; text-align: center; align-items: center; background-color: white; font-family:sans-serif; border-radius:25px ">
+  <div class="chartjs" style="  min-height: 170px;  ">
     <canvas id="myChart"></canvas>
   </div>
   PARAMETER VISUALIZATION
@@ -90,6 +92,7 @@
                     .then(response => response)
                     .then(data => console.log(data));
             }
+
             };
             
             function valueChange(){
@@ -114,6 +117,7 @@
         };
         valueChange();
         setInterval("valueChange();",14000); 
+
     </script>
           <script src="{{url_for('static', filename='./chart.js')}}"></script>
 

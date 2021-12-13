@@ -11,7 +11,10 @@ import json
 import atexit
 from apscheduler.schedulers.background import BackgroundScheduler
 
+
 ser = serial.Serial('/dev/ttyUSB0', 9600, timeout=2)
+
+
 ser.flush()
 
 fan = gpiozero.OutputDevice(12, active_high=False, initial_value=True)
